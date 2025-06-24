@@ -5,6 +5,7 @@ import com.example.apiecommerce.dto.CartItemResponse;
 import com.example.apiecommerce.model.CartItem;
 import com.example.apiecommerce.model.User;
 import com.example.apiecommerce.service.CartService;
+import com.example.apiecommerce.model.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -26,4 +27,10 @@ public class CartController {
     public List<CartItemResponse> viewCart(@AuthenticationPrincipal User user) {
         return cartService.getCartItems(user);
     }
+
+    @PostMapping("/checkout")
+    public List<Order> checkoutCart(@AuthenticationPrincipal User user) {
+        return cartService.checkoutCart(user);
+    }
+
 }
