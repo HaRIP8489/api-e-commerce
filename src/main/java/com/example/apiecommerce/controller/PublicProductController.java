@@ -2,6 +2,7 @@ package com.example.apiecommerce.controller;
 
 import java.util.List;
 import com.example.apiecommerce.model.Product;
+import com.example.apiecommerce.dto.ProductDetailDTO;
 import com.example.apiecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +20,8 @@ public class PublicProductController {
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Integer id) {
-        return productService.getProductById(id)
+    public ProductDetailDTO getProductById(@PathVariable Integer id) {
+        return productService.getProductDetailById(id)
                 .orElseThrow(() -> new RuntimeException("Product not found with id " + id));
     }
 }
